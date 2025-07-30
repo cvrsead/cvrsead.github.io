@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход - Skillora</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0B1327 0%, #0B1327 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .background-logo {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 30px;
+        }
+        
+        .login-form {
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+            border: 2px solid #00ff99;
+        }
+        
+        .login-form h2 {
+            text-align: center;
+            color: #0B1327;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #0B1327;
+            font-weight: bold;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #00ff99;
+        }
+        
+        .login-btn {
+            width: 100%;
+            background: #00ff99;
+            color: #0B1327;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .login-btn:hover {
+            background: #00cc7a;
+        }
+        
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .back-link a {
+            color: #00ff99;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .back-link a:hover {
+            color: #00cc7a;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <img src="logo.png" alt="Логотип Skillora" class="background-logo">
+        </div>
+        <div class="login-form">
+            <h2>Вход в систему</h2>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Логин:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <button type="submit" class="login-btn">Войти</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Простая проверка (для демонстрации)
+            if (username && password) {
+                // В реальном проекте здесь была бы отправка данных на сервер
+                window.location.href = 'main.html';
+            } else {
+                // Показываем ошибку в интерфейсе
+                const errorDiv = document.createElement('div');
+                errorDiv.style.color = '#e74c3c';
+                errorDiv.style.textAlign = 'center';
+                errorDiv.style.marginTop = '10px';
+                errorDiv.textContent = 'Пожалуйста, заполните все поля';
+                
+                const form = document.getElementById('loginForm');
+                const existingError = form.querySelector('.error-message');
+                if (existingError) {
+                    existingError.remove();
+                }
+                errorDiv.classList.add('error-message');
+                form.appendChild(errorDiv);
+            }
+        });
+    </script>
+</body>
+</html> 

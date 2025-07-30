@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок - Skillora</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Логотип Skillora" class="logo">
+            <h1>Study<br>Check<br>Study</h1>
+        </div>
+        <div class="centered-title">
+            <h1>Skillora</h1>
+        </div>
+        <a href="profile.html" class="login-button">
+            <span>Личный кабинет</span>
+            <img src="user-icon.png" alt="Иконка пользователя" class="user-icon">
+        </a>
+    </header>
+
+    <!-- Основное содержимое -->
+    <main>
+        <section class="course-details">
+            <!-- Сайдбар -->
+            <aside class="sidebar">
+                <a href="main.html" class="mycourseurl"><h3>Мои курсы</h3></a>
+                <ul>
+                    <li><a href="course.html?name=Математические методы компьютерной графики" class="sidebarA">Математические методы компьютерной графики</a></li>
+                    <li><a href="course.html?name=Цифровые технологии в гуманитарных проектах" class="sidebarA">Цифровые технологии в гуманитарных проектах</a></li>
+                    <li><a href="course.html?name=Математический анализ" class="sidebarA">Математический анализ</a></li>
+                    <li><a href="course.html?name=Машинно-ориентированное программирование" class="sidebarA">Машинно-ориентированное программирование</a></li>
+                    <li><a href="course.html?name=Философия" class="sidebarA">Философия</a></li>
+                    <li><a href="course.html?name=Методы вычислений" class="sidebarA">Методы вычислений</a></li>
+                </ul>
+            </aside>
+
+            <!-- Основной контент урока -->
+            <div class="course-content">
+                <h2>Лекция: <span id="lecture-title">Введение в философию</span></h2>
+
+                <!-- PDF материал -->
+                <div class="pdf-section">
+                    <h3>Теоретический материал</h3>
+                    <p>Ознакомьтесь с лекцией в формате PDF:</p>
+                    <a href="lecture.pdf" class="download-btn" download>
+                        📄 Скачать PDF (Лекция 1.1)
+                    </a>
+                    <p><em>Файл: lecture.pdf (пример — замените реальным PDF)</em></p>
+                </div>
+
+                <!-- Кнопка открытия теста -->
+                <button id="toggle-test-btn" class="test-toggle-btn">
+                    Открыть тест
+                </button>
+
+                <!-- Блок с тестом (изначально скрыт) -->
+                <div id="test-section" class="test-section" style="display: none;">
+                    <h3>Тест по теме</h3>
+                    <form id="quiz-form">
+                        <!-- Вопрос 1 -->
+                        <div class="question">
+                            <p><strong>1. Что такое философия?</strong></p>
+                            <label><input type="radio" name="q1" value="a"> a) Наука о природе</label><br>
+                            <label><input type="radio" name="q1" value="b"> b) Любовь к мудрости</label><br>
+                            <label><input type="radio" name="q1" value="c"> c) Религиозное учение</label>
+                        </div>
+
+                        <!-- Вопрос 2 -->
+                        <div class="question">
+                            <p><strong>2. Кто из перечисленных философов был учеником Сократа?</strong></p>
+                            <label><input type="radio" name="q2" value="a"> a) Аристотель</label><br>
+                            <label><input type="radio" name="q2" value="b"> b) Платон</label><br>
+                            <label><input type="radio" name="q2" value="c"> c) Кант</label>
+                        </div>
+
+                        <!-- Вопрос 3 -->
+                        <div class="question">
+                            <p><strong>3. Что означает термин "мировоззрение"?</strong></p>
+                            <label><input type="radio" name="q3" value="a"> a) Система взглядов на мир и человека</label><br>
+                            <label><input type="radio" name="q3" value="b"> b) Научная гипотеза</label><br>
+                            <label><input type="radio" name="q3" value="c"> c) Политическая идеология</label>
+                        </div>
+
+                        <!-- Кнопка проверки -->
+                        <button type="button" onclick="checkAnswers()" class="submit-btn">
+                            Проверить ответы
+                        </button>
+                    </form>
+
+                    <!-- Результат -->
+                    <div id="result" class="result"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Показать/скрыть тест
+        document.getElementById('toggle-test-btn').addEventListener('click', function() {
+            const testSection = document.getElementById('test-section');
+            if (testSection.style.display === 'none') {
+                testSection.style.display = 'block';
+                this.textContent = 'Скрыть тест';
+            } else {
+                testSection.style.display = 'none';
+                this.textContent = 'Открыть тест';
+            }
+        });
+
+        // Получаем тему из URL и обновляем заголовок
+        const urlParams = new URLSearchParams(window.location.search);
+        const topic = urlParams.get('topic');
+        
+        if (topic) {
+            document.getElementById('lecture-title').textContent = topic;
+        }
+
+        // Проверка ответов
+        function checkAnswers() {
+            // Определяем правильные ответы в зависимости от темы
+            let correctAnswers = {
+                q1: "b",
+                q2: "b", 
+                q3: "a"
+            };
+
+            // Разные ответы для разных тем
+            if (topic && topic.includes('Математический анализ')) {
+                correctAnswers = { q1: "a", q2: "c", q3: "b" };
+            } else if (topic && topic.includes('Компьютерная графика')) {
+                correctAnswers = { q1: "c", q2: "a", q3: "b" };
+            } else if (topic && topic.includes('Цифровые технологии')) {
+                correctAnswers = { q1: "b", q2: "a", q3: "c" };
+            } else if (topic && topic.includes('Программирование')) {
+                correctAnswers = { q1: "a", q2: "b", q3: "a" };
+            } else if (topic && topic.includes('Методы вычислений')) {
+                correctAnswers = { q1: "c", q2: "b", q3: "a" };
+            }
+
+            let score = 0;
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = ''; // Очистить предыдущий результат
+
+            for (const [key, value] of Object.entries(correctAnswers)) {
+                const selected = document.querySelector(`input[name="${key}"]:checked`);
+                if (selected && selected.value === value) {
+                    score++;
+                }
+            }
+
+            resultDiv.innerHTML = `<p>Вы ответили правильно на <strong>${score} из 3</strong> вопросов.</p>`;
+        }
+    </script>
+</body>
+</html>

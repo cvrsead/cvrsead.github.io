@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курс - Skillora</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Логотип Skillora" class="logo">
+            <h1>Study<br>Check<br>Study</h1>
+        </div>
+        <div class="centered-title">
+            <h1>Skillora</h1>
+        </div>
+        <a href="profile.html" class="login-button">
+            <span>Личный кабинет</span>
+            <img src="user-icon.png" alt="Иконка пользователя" class="user-icon">
+        </a>
+    </header>
+
+    <!-- Главное содержимое -->
+    <main>
+        <section class="course-details">
+            <!-- Сайдбар с курсами -->
+            <aside class="sidebar">
+                <a href="main.html" class="mycourseurl"><h3>Мои курсы</h3></a>
+                <ul>
+                    <li><a href="course.html?name=Математические методы компьютерной графики" class="sidebarA">Математические методы компьютерной графики</a></li>
+                    <li><a href="course.html?name=Цифровые технологии в гуманитарных проектах" class="sidebarA">Цифровые технологии в гуманитарных проектах</a></li>
+                    <li><a href="course.html?name=Математический анализ" class="sidebarA">Математический анализ</a></li>
+                    <li><a href="course.html?name=Машинно-ориентированное программирование" class="sidebarA">Машинно-ориентированное программирование</a></li>
+                    <li><a href="course.html?name=Философия" class="sidebarA">Философия</a></li>
+                    <li><a href="course.html?name=Методы вычислений" class="sidebarA">Методы вычислений</a></li>
+                </ul>
+            </aside>
+
+            <!-- Основное содержимое курса -->
+            <div class="course-content">
+                <h2>Курс: <span id="course-name"></span></h2>
+                <h3>Темы:</h3>
+                <div class="topics">
+                    <!-- Здесь будут динамически добавлены темы -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+     <script>
+        // Получаем название курса из URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const courseName = urlParams.get('name');
+
+        // Отображаем название курса
+        document.getElementById('course-name').textContent = courseName;
+
+        // Пример тем для курса "Философия"
+        if (courseName === 'Философия') {
+            const topicsDiv = document.querySelector('.topics');
+            const topics = [
+                { title: "Лекция 1.1 Философия и мировоззрение", link: "lesson.html?topic=Лекция 1.1" },
+                { title: "Лекция 1.2 Генезис философского знания: от Древнего Востока до Античности", link: "lesson.html?topic=Лекция 1.2" },
+                { title: "Лекция 1.3 Генезис философского знания: от Средневековья до немецкой классической философии", link: "lesson.html?topic=Лекция 1.3" },
+                { title: "Лекция 1.4 Генезис философского знания: классика и постклассика", link: "lesson.html?topic=Лекция 1.4" },
+                { title: "Лекция 1.5 Генезис философского знания: неклассическая и постклассическая философия", link: "lesson.html?topic=Лекция 1.5" },
+                { title: "Лекция 1.6 Философская мысль Беларуси", link: "lesson.html?topic=Лекция 1.6" }
+            ];
+
+            topics.forEach(topic => {
+                const topicCard = document.createElement('div');
+                topicCard.classList.add('topic-card');
+                topicCard.innerHTML = `<a href="${topic.link}" class="topic-link">${topic.title}</a>`;
+                topicsDiv.appendChild(topicCard);
+            });
+        }
+        // Темы для курса "Математические методы компьютерной графики"
+        else if (courseName === 'Математические методы компьютерной графики') {
+            const topicsDiv = document.querySelector('.topics');
+            const topics = [
+                { title: "Лекция 1.1 Введение в компьютерную графику", link: "lesson.html?topic=Лекция 1.1" },
+                { title: "Лекция 1.2 Математические основы 2D графики", link: "lesson.html?topic=Лекция 1.2" },
+                { title: "Лекция 1.3 Преобразования координат", link: "lesson.html?topic=Лекция 1.3" },
+                { title: "Лекция 1.4 Алгоритмы растеризации", link: "lesson.html?topic=Лекция 1.4" },
+                { title: "Лекция 1.5 Основы 3D графики", link: "lesson.html?topic=Лекция 1.5" },
+                { title: "Лекция 1.6 Проекции и перспектива", link: "lesson.html?topic=Лекция 1.6" }
+            ];
+
+            topics.forEach(topic => {
+                const topicCard = document.createElement('div');
+                topicCard.classList.add('topic-card');
+                topicCard.innerHTML = `<a href="${topic.link}" class="topic-link">${topic.title}</a>`;
+                topicsDiv.appendChild(topicCard);
+            });
+        }
+        // Темы для курса "Цифровые технологии в гуманитарных проектах"
+        else if (courseName === 'Цифровые технологии в гуманитарных проектах') {
+            const topicsDiv = document.querySelector('.topics');
+            const topics = [
+                { title: "Лекция 1.1 Введение в цифровые гуманитарные науки", link: "lesson.html?topic=Лекция 1.1" },
+                { title: "Лекция 1.2 Обработка и анализ текстовых данных", link: "lesson.html?topic=Лекция 1.2" },
+                { title: "Лекция 1.3 Визуализация данных", link: "lesson.html?topic=Лекция 1.3" },
+                { title: "Лекция 1.4 ГИС в гуманитарных исследованиях", link: "lesson.html?topic=Лекция 1.4" },
+                { title: "Лекция 1.5 Цифровые архивы и базы данных", link: "lesson.html?topic=Лекция 1.5" },
+                { title: "Лекция 1.6 Проектирование цифровых экспозиций", link: "lesson.html?topic=Лекция 1.6" }
+            ];
+
+            topics.forEach(topic => {
+                const topicCard = document.createElement('div');
+                topicCard.classList.add('topic-card');
+                topicCard.innerHTML = `<a href="${topic.link}" class="topic-link">${topic.title}</a>`;
+                topicsDiv.appendChild(topicCard);
+            });
+        }
+        // Темы для курса "Математический анализ"
+        else if (courseName === 'Математический анализ') {
+            const topicsDiv = document.querySelector('.topics');
+            const topics = [
+                { title: "Лекция 1.1 Пределы последовательностей", link: "lesson.html?topic=Лекция 1.1" },
+                { title: "Лекция 1.2 Пределы функций", link: "lesson.html?topic=Лекция 1.2" },
+                { title: "Лекция 1.3 Непрерывность функций", link: "lesson.html?topic=Лекция 1.3" },
+                { title: "Лекция 1.4 Производная функции", link: "lesson.html?topic=Лекция 1.4" },
+                { title: "Лекция 1.5 Дифференцирование сложных функций", link: "lesson.html?topic=Лекция 1.5" },
+                { title: "Лекция 1.6 Приложения производной", link: "lesson.html?topic=Лекция 1.6" }
+            ];
+
+            topics.forEach(topic => {
+                const topicCard = document.createElement('div');
+                topicCard.classList.add('topic-card');
+                topicCard.innerHTML = `<a href="${topic.link}" class="topic-link">${topic.title}</a>`;
+                topicsDiv.appendChild(topicCard);
+            });
+        }
+        // Темы для курса "Машинно-ориентированное программирование"
+        else if (courseName === 'Машинно-ориентированное программирование') {
+            const topicsDiv = document.querySelector('.topics');
+            const topics = [
+                { title: "Лекция 1.1 Архитектура процессора", link: "lesson.html?topic=Лекция 1.1" },
+                { title: "Лекция 1.2 Система команд процессора", link: "lesson.html?topic=Лекция 1.2" },
+                { title: "Лекция 1.3 Ассемблер и машинный код", link: "lesson.html?topic=Лекция 1.3" },
+                { title: "Лекция 1.4 Организация памяти", link: "lesson.html?topic=Лекция 1.4" },
+                { title: "Лекция 1.5 Процедуры и функции", link: "lesson.html?topic=Лекция 1.5" },
+                { title: "Лекция 1.6 Оптимизация программ", link: "lesson.html?topic=Лекция 1.6" }
+            ];
+
+            topics.forEach(topic => {
+                const topicCard = document.createElement('div');
+                topicCard.classList.add('topic-card');
+                topicCard.innerHTML = `<a href="${topic.link}" class="topic-link">${topic.title}</a>`;
+                topicsDiv.appendChild(topicCard);
+            });
+        }
+        // Темы для курса "Методы вычислений"
+        else if (courseName === 'Методы вычислений') {
+            const topicsDiv = document.querySelector('.topics');
+            const topics = [
+                { title: "Лекция 1.1 Численные методы решения уравнений", link: "lesson.html?topic=Лекция 1.1" },
+                { title: "Лекция 1.2 Интерполяция и аппроксимация", link: "lesson.html?topic=Лекция 1.2" },
+                { title: "Лекция 1.3 Численное дифференцирование", link: "lesson.html?topic=Лекция 1.3" },
+                { title: "Лекция 1.4 Численное интегрирование", link: "lesson.html?topic=Лекция 1.4" },
+                { title: "Лекция 1.5 Решение систем линейных уравнений", link: "lesson.html?topic=Лекция 1.5" },
+                { title: "Лекция 1.6 Решение дифференциальных уравнений", link: "lesson.html?topic=Лекция 1.6" }
+            ];
+
+            topics.forEach(topic => {
+                const topicCard = document.createElement('div');
+                topicCard.classList.add('topic-card');
+                topicCard.innerHTML = `<a href="${topic.link}" class="topic-link">${topic.title}</a>`;
+                topicsDiv.appendChild(topicCard);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет - Skillora</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Логотип Skillora" class="logo">
+            <h1>Study<br>Check<br>Study</h1>
+        </div>
+        <div class="centered-title">
+            <h1>Skillora</h1>
+        </div>
+        <a href="profile.html" class="login-button">
+            <span>Личный кабинет</span>
+            <img src="user-icon.png" alt="Иконка пользователя" class="user-icon">
+        </a>
+    </header>
+
+    <main>
+        <section class="profile-section">
+            <!-- Сайдбар -->
+            <aside class="sidebar">
+                <a href="main.html" class="mycourseurl"><h3>Мои курсы</h3></a>
+                <ul>
+                    <li><a href="course.html?name=Математические методы компьютерной графики" class="sidebarA">Математические методы компьютерной графики</a></li>
+                    <li><a href="course.html?name=Цифровые технологии в гуманитарных проектах" class="sidebarA">Цифровые технологии в гуманитарных проектах</a></li>
+                    <li><a href="course.html?name=Математический анализ" class="sidebarA">Математический анализ</a></li>
+                    <li><a href="course.html?name=Машинно-ориентированное программирование" class="sidebarA">Машинно-ориентированное программирование</a></li>
+                    <li><a href="course.html?name=Философия" class="sidebarA">Философия</a></li>
+                    <li><a href="course.html?name=Методы вычислений" class="sidebarA">Методы вычислений</a></li>
+                </ul>
+            </aside>
+
+            <!-- Основной контент личного кабинета -->
+            <div class="course-content">
+                <h2>Личный кабинет</h2>
+                <div class="profile-info" style="background:#fff; border:2px solid #00ff99; border-radius:10px; padding:20px; margin-bottom:30px; max-width:500px;">
+                    <h3>Информация о пользователе</h3>
+                    <p><strong>Имя:</strong> Иван Иванов</p>
+                    <p><strong>Email:</strong> ivan.ivanov@example.com</p>
+                    <p><strong>Группа:</strong> 12345</p>
+                </div>
+                <div class="profile-stats" style="background:#fff; border:2px solid #00ff99; border-radius:10px; padding:20px; max-width:500px;">
+                    <h3>Статистика по тестам</h3>
+                    <table style="width:100%; border-collapse:collapse;">
+                        <thead>
+                            <tr style="background:#e0e0e0;">
+                                <th style="padding:8px; border-bottom:1px solid #00ff99; text-align:left;">Курс</th>
+                                <th style="padding:8px; border-bottom:1px solid #00ff99; text-align:left;">Тема</th>
+                                <th style="padding:8px; border-bottom:1px solid #00ff99; text-align:left;">Результат</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding:6px;">Философия</td>
+                                <td style="padding:6px;">Введение в философию</td>
+                                <td style="padding:6px;">3/3</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px;">Математический анализ</td>
+                                <td style="padding:6px;">Пределы и производные</td>
+                                <td style="padding:6px;">2/3</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px;">Цифровые технологии</td>
+                                <td style="padding:6px;">Введение</td>
+                                <td style="padding:6px;">3/3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html> 
